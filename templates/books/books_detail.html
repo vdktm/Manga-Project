@@ -1,11 +1,17 @@
 {% extends 'main.html' %}
 
 {% block content %}
+    <div class="row">
+    <div class="col-4">
         <img src={{ book.thumbnail.url }} alt={{ book.title }} width="250">
-        <strong>{{ book.title }}</strong>
-        <p>{{ book.description }}</p>
-        <p>{{ book.text }}</p>
+    </div>
+    <div class="col-8">
+        <h3><strong>{{ book.title }}</strong></h3>
+        <p>Год выпуска: {{ book.year }}</p>
+        <p>Автор: {{ book.author }}</p>
         <small>{{ book.create }}</small>
-        <hr>
-        <span>{{ book.category.title }}</span>
+        <p>Жанр: {{ book.category.title }}</p>
+        <p>{{ book.description }}</p>
+    </div>
+    </div>
 {% endblock %}
