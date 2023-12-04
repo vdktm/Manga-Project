@@ -19,6 +19,9 @@ class Comix(models.Model):
     year = models.PositiveIntegerField()
     category = TreeForeignKey('Category', on_delete=models.PROTECT)
 
+    class Meta:
+        ordering = ['title']
+
     def __str__(self):
         return self.title
 
