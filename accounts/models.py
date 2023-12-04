@@ -3,6 +3,8 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.urls import reverse
 
+from services.utils import unique_slugify
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -20,6 +22,14 @@ class Profile(models.Model):
         Сортировка, название таблицы в базе данных
         """
         ordering = ('user',)
+
+    def save(self, *args, **kwargs):
+        """
+        Сохранение полей модели при их отсутствии заполнения
+        """
+        if not self.slug:
+            self.slug = unique_slugify(self, self.user.username)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         """

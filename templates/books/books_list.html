@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<div>
     {% for book in books %}
     <div class="card mb-3">
         <div class="row">
@@ -9,12 +10,13 @@
             </div>
             <div class="col-8">
                 <div class="card-body">
-                    <h5 class="card-title"><strong><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></strong></h5>
+                    <h4 class="card-title"><strong><a style="color: #e85061; text-decoration: none" href="{{ book.get_absolute_url }}">{{ book.title }}</a></strong></h4>
                     <p class="card-text">{{ book.description|truncatewords:20|linebreaks }}</p>
-                    <a href="{{ book.category.get_absolute_url }}">Жанр {{ book.category.title }}</a>
+                    <a style="color: black" href="{{ book.category.get_absolute_url }}">Жанр {{ book.category.title }}</a>
                   </div>
                 </div>
             </div>
       </div>
     {% endfor %}
+</div>
 {% endblock %}

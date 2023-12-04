@@ -1,17 +1,28 @@
 {% extends 'main.html' %}
 
 {% block content %}
+    <div class="card mb-3">
     <div class="row">
-    <div class="col-4">
-        <img src={{ book.thumbnail.url }} alt={{ book.title }} width="250">
+    <div class="row">
+        <div class="col-4">
+            <img src={{ book.thumbnail.url }} alt={{ book.title }} width="250">
+        </div>
+        <div class="col-8">
+            <h1><strong>{{ book.title }}</strong></h1>
+            <hr>
+            <br>
+            <h5>
+                <p>Год выпуска: {{ book.year }}</p>
+                <p>Автор: {{ book.author }}</p>
+                <small>{{ book.create }}</small>
+                <p>Жанр: {{ book.category.title }}</p>
+            </h5>
+        </div>
     </div>
-    <div class="col-8">
-        <h3><strong>{{ book.title }}</strong></h3>
-        <p>Год выпуска: {{ book.year }}</p>
-        <p>Автор: {{ book.author }}</p>
-        <small>{{ book.create }}</small>
-        <p>Жанр: {{ book.category.title }}</p>
-        <p>{{ book.description }}</p>
+    <br>
+    <div>
+        <p class="card-body">{{ book.description }}</p>
+    </div>
     </div>
     </div>
 {% endblock %}
